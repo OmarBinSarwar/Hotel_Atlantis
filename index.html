@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlantis The Royal | Luxury Hotel & Resort</title>
+  <meta name="description" content="Atlantis The Royal is the world's most iconic ultra-luxury experiential resort. Discover extraordinary stays, dining, entertainment and wellness on the Arabian Gulf." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════ NAVIGATION ═══════════════════════════════════════ -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-left">
+      <button class="nav-hamburger" id="navMenuToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <button class="nav-search" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <span class="nav-lang">EN</span>
+      <span class="nav-location-label">Location</span>
+    </div>
+    <div class="nav-logo">
+      <a href="index.html" class="logo-link">
+        <span class="logo-text">ATLANTIS</span>
+        <span class="logo-sub">THE ROYAL</span>
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="#destinations" class="nav-link">EXPLORE THE DESTINATION</a>
+      <a href="booking.html" class="nav-btn" id="nav-book-btn">BOOK NOW</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">✕</button>
+    <nav class="mobile-nav">
+      <a href="#destinations" class="mobile-nav-link">EXPLORE THE DESTINATION</a>
+      <a href="#resorts" class="mobile-nav-link">OUR RESORTS</a>
+      <a href="#experiences" class="mobile-nav-link">EXPERIENCES</a>
+      <a href="#rooms" class="mobile-nav-link">STAYS</a>
+      <a href="#offers" class="mobile-nav-link">OFFERS</a>
+      <a href="booking.html" class="mobile-nav-link mobile-book">BOOK NOW</a>
+    </nav>
+  </div>
+
+  <!-- ═══════════════════════════════════════ HERO SECTION ═══════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="images/hero-aerial.png" alt="Atlantis The Royal Aerial View" class="hero-img hero-img-active" />
+      <img src="images/hero-pool.png" alt="Infinity Pool" class="hero-img" />
+      <img src="images/hero-beach.png" alt="Private Beach" class="hero-img" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title">The World's Most Iconic<br/>Entertainment Destination</h1>
+    </div>
+    <div class="hero-dots">
+      <button class="dot dot-active" data-slide="0"></button>
+      <button class="dot" data-slide="1"></button>
+      <button class="dot" data-slide="2"></button>
+    </div>
+
+    <!-- Booking Widget -->
+    <section class="quick-booking" id="quick-booking">
+      <div class="qb-inner">
+        <div class="qb-field qb-field-location">
+          <label>Location</label>
+          <select id="qb-location">
+            <option value="palm">Atlantis, The Palm</option>
+            <option value="royal" selected>Atlantis The Royal</option>
+            <option value="waterpark">Aquaventure World</option>
+          </select>
+        </div>
+        <div class="qb-field">
+          <label>Check-in / Check-out</label>
+          <div class="qb-dates">
+            <input type="date" id="qb-checkin" aria-label="Check-in date" />
+            <span class="qb-date-sep">—</span>
+            <input type="date" id="qb-checkout" aria-label="Check-out date" />
+          </div>
+        </div>
+        <div class="qb-field qb-field-sm">
+          <label>Adults</label>
+          <select id="qb-adults">
+            <option value="1">1</option>
+            <option value="2" selected>2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5+</option>
+          </select>
+        </div>
+        <div class="qb-field qb-field-sm">
+          <label>Children</label>
+          <select id="qb-children">
+            <option value="0" selected>0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4+</option>
+          </select>
+        </div>
+        <div class="qb-field">
+          <label>Promo Code</label>
+          <input type="text" id="qb-promo" placeholder="Please enter promo code" />
+        </div>
+        <button class="qb-btn" id="qb-search-btn" onclick="goToBooking()">CHECK AVAILABILITY</button>
+      </div>
+    </section>
+  </section>
+
+  <!-- ═══════════════════════════════════════ INTRO ═══════════════════════════════════════ -->
+  <section class="intro" id="destinations">
+    <div class="intro-inner">
+      <h2>Atlantis The Royal</h2>
+      <p>An iconic ultra-luxury resort where the impossible becomes possible. Discover a world of extraordinary experiences across stays, dining, entertainment, attractions and wellness on the shores of the Arabian Gulf.</p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ RESORT CARDS ═══════════════════════════════════════ -->
+  <section class="resorts" id="resorts">
+    <div class="resorts-grid">
+      <article class="resort-card">
+        <div class="resort-img-wrap">
+          <img src="images/suite.png" alt="Atlantis The Royal" />
+        </div>
+        <div class="resort-body">
+          <h3>Atlantis The Royal</h3>
+          <p>Step inside to experience Dubai's newest icon. Discover the place where the impossible becomes possible. Daring and innovative, this is the most ultra-luxury experiential resort in the world.</p>
+          <a href="booking.html" class="resort-link">Explore →</a>
+        </div>
+      </article>
+      <article class="resort-card">
+        <div class="resort-img-wrap">
+          <img src="images/hero-aerial.png" alt="Atlantis, The Palm" />
+        </div>
+        <div class="resort-body">
+          <h3>Atlantis, The Palm</h3>
+          <p>This Dubai icon is the ultimate holiday destination for both couples and families to make lifetime memories. From thrill-seekers to foodies, sun lovers to explorers — an unforgettable experience for everyone.</p>
+          <a href="booking.html" class="resort-link">Explore →</a>
+        </div>
+      </article>
+      <article class="resort-card">
+        <div class="resort-img-wrap">
+          <img src="images/pool.png" alt="Aquaventure World" />
+        </div>
+        <div class="resort-body">
+          <h3>Aquaventure World</h3>
+          <p>Conquer the region's largest waterpark and experience record-breaking slides and attractions. Explore Dubai's favourite aquarium, cruise along the Arabian sea and meet charming dolphins at Atlas Village.</p>
+          <a href="#experiences" class="resort-link">Explore →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ EXPERIENCES CAROUSEL ═══════════════════════════════════════ -->
+  <section class="aquaventure" id="experiences">
+    <div class="aquaventure-header">
+      <h2>A Legendary Experience Awaits at<br/><em>Aquaventure World</em></h2>
+      <a href="#experiences" class="btn btn-primary">Explore</a>
+    </div>
+    <div class="exp-carousel-wrap">
+      <button class="exp-carousel-btn exp-carousel-prev" id="expPrev" aria-label="Previous">←</button>
+      <div class="exp-carousel" id="expCarousel">
+        <div class="exp-carousel-track" id="expTrack">
+          <article class="exp-slide">
+            <img src="images/pool.png" alt="Aquaventure Waterpark" />
+            <div class="exp-slide-overlay"></div>
+            <div class="exp-slide-content">
+              <h4>Aquaventure Waterpark</h4>
+              <a href="booking.html" class="exp-slide-link">Explore →</a>
+            </div>
+          </article>
+          <article class="exp-slide">
+            <img src="images/hero-pool.png" alt="Trident Tower" />
+            <div class="exp-slide-overlay"></div>
+            <div class="exp-slide-content">
+              <h4>Trident Tower</h4>
+              <a href="booking.html" class="exp-slide-link">Explore →</a>
+            </div>
+          </article>
+          <article class="exp-slide">
+            <img src="images/beach.png" alt="Hydra Racer" />
+            <div class="exp-slide-overlay"></div>
+            <div class="exp-slide-content">
+              <h4>Hydra Racer</h4>
+              <a href="booking.html" class="exp-slide-link">Explore →</a>
+            </div>
+          </article>
+          <article class="exp-slide">
+            <img src="images/spa.png" alt="Atlas Village" />
+            <div class="exp-slide-overlay"></div>
+            <div class="exp-slide-content">
+              <h4>Atlas Village</h4>
+              <a href="booking.html" class="exp-slide-link">Explore →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+      <button class="exp-carousel-btn exp-carousel-next" id="expNext" aria-label="Next">→</button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ DINING & WELLNESS ═══════════════════════════════════════ -->
+  <section class="experiences" id="dining">
+    <div class="exp-grid">
+      <div class="exp-card exp-card-large">
+        <img src="images/restaurant.png" alt="Fine Dining" class="exp-img" />
+        <div class="exp-card-overlay"></div>
+        <div class="exp-card-content">
+          <p class="exp-eyebrow">CULINARY EXCELLENCE</p>
+          <h3>Where The World Comes To Dine</h3>
+          <p>22 world-class restaurants led by celebrity chefs — from Michelin-starred fine dining to beachfront grills</p>
+          <a href="booking.html" class="exp-link">EXPLORE →</a>
+        </div>
+      </div>
+      <div class="exp-col-right">
+        <div class="exp-card exp-card-half">
+          <img src="images/spa.png" alt="Wellness Spa" class="exp-img" />
+          <div class="exp-card-overlay"></div>
+          <div class="exp-card-content">
+            <p class="exp-eyebrow">AWAKEN WELLNESS</p>
+            <h3>Sanctum of the Soul</h3>
+            <a href="booking.html" class="exp-link">EXPLORE →</a>
+          </div>
+        </div>
+        <div class="exp-card exp-card-half">
+          <img src="images/beach.png" alt="Private Beach" class="exp-img" />
+          <div class="exp-card-overlay"></div>
+          <div class="exp-card-content">
+            <p class="exp-eyebrow">PRIVATE BEACH</p>
+            <h3>Your Shore, Your Kingdom</h3>
+            <a href="booking.html" class="exp-link">EXPLORE →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ ROOMS SHOWCASE ═══════════════════════════════════════ -->
+  <section class="rooms" id="rooms">
+    <div class="section-header section-header-light">
+      <p class="eyebrow">STAYS</p>
+      <h2>Rooms & Suites</h2>
+      <p class="section-desc">Every space is a masterpiece — designed to inspire, crafted to perfection.</p>
+    </div>
+    <div class="rooms-carousel">
+      <div class="rooms-track" id="roomsTrack">
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="images/suite.png" alt="Deluxe Ocean Room" class="room-img" />
+            <div class="room-badge">FROM $850/NIGHT</div>
+          </div>
+          <div class="room-info">
+            <h4>Deluxe Ocean Room</h4>
+            <p>Panoramic gulf views, private balcony, marble bathroom suite</p>
+            <div class="room-features">
+              <span>52m²</span><span>King Bed</span><span>Ocean View</span>
+            </div>
+            <a href="booking.html" class="btn btn-outline">BOOK NOW</a>
+          </div>
+        </div>
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="images/suite.png" alt="Royal Suite" class="room-img room-img-tinted" />
+            <div class="room-badge room-badge-featured">FROM $2,400/NIGHT</div>
+          </div>
+          <div class="room-info">
+            <h4>Royal Ocean Suite</h4>
+            <p>Two-floor sanctuary with private plunge pool and butler service</p>
+            <div class="room-features">
+              <span>180m²</span><span>2 Bedrooms</span><span>Private Pool</span>
+            </div>
+            <a href="booking.html" class="btn btn-outline">BOOK NOW</a>
+          </div>
+        </div>
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="images/suite.png" alt="Sky Villa" class="room-img room-img-warm" />
+            <div class="room-badge">FROM $5,800/NIGHT</div>
+          </div>
+          <div class="room-info">
+            <h4>Sky Villa</h4>
+            <p>The pinnacle of luxury — your private sky residence above the Gulf</p>
+            <div class="room-features">
+              <span>380m²</span><span>4 Bedrooms</span><span>Sky Terrace</span>
+            </div>
+            <a href="booking.html" class="btn btn-outline">BOOK NOW</a>
+          </div>
+        </div>
+        <div class="room-card">
+          <div class="room-img-wrap">
+            <img src="images/suite.png" alt="Imperial Penthouse" class="room-img" style="filter:hue-rotate(15deg) brightness(0.85);" />
+            <div class="room-badge">FROM $12,000/NIGHT</div>
+          </div>
+          <div class="room-info">
+            <h4>Imperial Penthouse</h4>
+            <p>The entire top floor — a private world of unrivalled grandeur</p>
+            <div class="room-features">
+              <span>800m²</span><span>Full Floor</span><span>360° Views</span>
+            </div>
+            <a href="booking.html" class="btn btn-outline">BOOK NOW</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rooms-nav">
+      <button class="rooms-prev" id="roomsPrev" aria-label="Previous room">←</button>
+      <button class="rooms-next" id="roomsNext" aria-label="Next room">→</button>
+    </div>
+    <div class="rooms-cta">
+      <a href="booking.html" class="btn btn-primary">VIEW ALL ROOMS</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ OFFERS SECTION ═══════════════════════════════════════ -->
+  <section class="offers" id="offers">
+    <div class="section-header section-header-light">
+      <p class="eyebrow">SPECIAL OFFERS</p>
+      <h2>Exclusive Privileges<br/><em>Await You</em></h2>
+    </div>
+    <div class="offers-grid">
+      <div class="offer-card">
+        <div class="offer-icon">✦</div>
+        <h4>Early Bird Escape</h4>
+        <p>Book 60 days ahead and receive up to 30% savings on your perfect stay</p>
+        <span class="offer-badge">SAVE 30%</span>
+        <a href="booking.html" class="btn btn-outline-light">BOOK OFFER</a>
+      </div>
+      <div class="offer-card offer-card-featured">
+        <div class="offer-icon">◆</div>
+        <h4>Royal Honeymoon Package</h4>
+        <p>Celebrate love in the world's most romantic setting — champagne, rose petals and private dining included</p>
+        <span class="offer-badge offer-badge-featured">MOST POPULAR</span>
+        <a href="booking.html" class="btn btn-primary">BOOK OFFER</a>
+      </div>
+      <div class="offer-card">
+        <div class="offer-icon">✧</div>
+        <h4>Family Sun & Sea</h4>
+        <p>Create lifelong memories — kids stay free and enjoy exclusive family experiences</p>
+        <span class="offer-badge">KIDS FREE</span>
+        <a href="booking.html" class="btn btn-outline-light">BOOK OFFER</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════ FOOTER ═══════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <span class="logo-text">ATLANTIS</span>
+        <span class="logo-sub">THE ROYAL</span>
+        <p class="footer-tagline">The most ultra-luxury experiential resort in the world</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h5>DESTINATION</h5>
+          <a href="#resorts">Atlantis The Royal</a>
+          <a href="#resorts">Atlantis, The Palm</a>
+          <a href="#experiences">Aquaventure World</a>
+          <a href="#">About Us</a>
+        </div>
+        <div class="footer-col">
+          <h5>STAYS</h5>
+          <a href="booking.html">Rooms & Suites</a>
+          <a href="booking.html">Villas</a>
+          <a href="booking.html">Penthouses</a>
+          <a href="#offers">Special Offers</a>
+        </div>
+        <div class="footer-col">
+          <h5>EXPERIENCES</h5>
+          <a href="#dining">Dining</a>
+          <a href="#">Wellness & Spa</a>
+          <a href="#experiences">Aquaventure</a>
+          <a href="#">Private Beach</a>
+        </div>
+        <div class="footer-col">
+          <h5>CONTACT</h5>
+          <a href="#">+971 4 426 2000</a>
+          <a href="#">reservations@atlantisroyal.com</a>
+          <a href="#">Palm Jumeirah, Dubai</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Atlantis The Royal. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Stay | Atlantis The Royal – Luxury Resort</title>
+  <meta name="description" content="Reserve your stay at Atlantis The Royal. Choose from world-class suites, penthouses and sky villas on the shores of the Arabian Gulf." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="booking-extra.css" />
+</head>
+<body class="booking-page">
+
+  <!-- NAVBAR -->
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-left">
+      <button class="nav-hamburger" id="navMenuToggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <button class="nav-search" aria-label="Search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <span class="nav-lang">EN</span>
+      <span class="nav-location-label">Location</span>
+    </div>
+    <div class="nav-logo">
+      <a href="index.html" class="logo-link">
+        <span class="logo-text">ATLANTIS</span>
+        <span class="logo-sub">THE ROYAL</span>
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="index.html#destinations" class="nav-link">EXPLORE THE DESTINATION</a>
+      <a href="booking.html" class="nav-btn">BOOK NOW</a>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">✕</button>
+    <nav class="mobile-nav">
+      <a href="index.html#destinations" class="mobile-nav-link">EXPLORE THE DESTINATION</a>
+      <a href="index.html#resorts" class="mobile-nav-link">OUR RESORTS</a>
+      <a href="index.html#experiences" class="mobile-nav-link">EXPERIENCES</a>
+      <a href="index.html#rooms" class="mobile-nav-link">STAYS</a>
+      <a href="booking.html" class="mobile-nav-link mobile-book">BOOK NOW</a>
+    </nav>
+  </div>
+
+  <!-- BOOKING HERO -->
+  <section class="booking-hero">
+    <img src="images/hero-aerial.png" alt="Atlantis The Royal" class="booking-hero-img" />
+    <div class="booking-hero-overlay"></div>
+    <div class="booking-hero-text">
+      <p class="eyebrow">YOUR SANCTUARY AWAITS</p>
+      <h1>Reserve Your Stay</h1>
+    </div>
+  </section>
+
+  <!-- STEP PROGRESS -->
+  <div class="steps-bar" id="stepsBar">
+    <div class="step-item active" id="step-1-indicator">
+      <div class="step-circle">1</div>
+      <span class="step-label">CHOOSE ROOM</span>
+    </div>
+    <div class="step-item" id="step-2-indicator">
+      <div class="step-circle">2</div>
+      <span class="step-label">YOUR DETAILS</span>
+    </div>
+    <div class="step-item" id="step-3-indicator">
+      <div class="step-circle">3</div>
+      <span class="step-label">CONFIRM</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       STEP 1: ROOM SELECTION
+  ═══════════════════════════════════════ -->
+  <div id="bookingStep1">
+    <div class="booking-layout">
+
+      <!-- LEFT: Filters -->
+      <aside class="booking-filters" id="bookingFilters">
+        <div class="filters-header">
+          <h3>FILTER ROOMS</h3>
+          <button class="filters-reset" id="filtersReset">RESET ALL</button>
+        </div>
+
+        <!-- Date Range -->
+        <div class="filter-group">
+          <span class="filter-label">DATES</span>
+          <div class="filter-dates">
+            <div>
+              <span class="filter-label" style="font-size:0.55rem;margin-bottom:0.4rem;display:block;">CHECK-IN</span>
+              <input type="date" id="filterCheckin" />
+            </div>
+            <div>
+              <span class="filter-label" style="font-size:0.55rem;margin-bottom:0.4rem;display:block;">CHECK-OUT</span>
+              <input type="date" id="filterCheckout" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Guests -->
+        <div class="filter-group">
+          <span class="filter-label">GUESTS</span>
+          <div class="guest-counter">
+            <button class="guest-btn" id="guestMinus" aria-label="Decrease guests">−</button>
+            <span class="guest-count" id="guestCount">2</span>
+            <button class="guest-btn" id="guestPlus" aria-label="Increase guests">+</button>
+          </div>
+        </div>
+
+        <!-- Room Type -->
+        <div class="filter-group">
+          <span class="filter-label">ROOM TYPE</span>
+          <select id="filterRoomType">
+            <option value="">All Types</option>
+            <option value="deluxe">Deluxe Rooms</option>
+            <option value="suite">Suites</option>
+            <option value="villa">Sky Villas</option>
+            <option value="penthouse">Penthouses</option>
+          </select>
+        </div>
+
+        <!-- Price Range -->
+        <div class="filter-group">
+          <span class="filter-label">MAX PRICE PER NIGHT</span>
+          <div class="price-range-wrap">
+            <input type="range" id="priceRange" min="500" max="15000" step="100" value="15000" />
+            <div class="price-labels">
+              <span>$500</span>
+              <span id="priceRangeLabel">$15,000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Amenities -->
+        <div class="filter-group">
+          <span class="filter-label">AMENITIES</span>
+          <div class="amenity-chips">
+            <button class="chip" data-amenity="pool">Private Pool</button>
+            <button class="chip" data-amenity="butler">Butler</button>
+            <button class="chip" data-amenity="ocean">Ocean View</button>
+            <button class="chip" data-amenity="terrace">Terrace</button>
+            <button class="chip" data-amenity="jacuzzi">Jacuzzi</button>
+            <button class="chip" data-amenity="kitchen">Kitchen</button>
+          </div>
+        </div>
+
+        <button class="filter-apply-btn" id="filterApplyBtn">SEARCH ROOMS</button>
+      </aside>
+
+      <!-- RIGHT: Results -->
+      <div class="booking-main" id="roomResults">
+        <div class="booking-topbar">
+          <p class="booking-results-count"><span id="resultCount">8</span> ROOMS AVAILABLE</p>
+          <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+            <div class="sort-wrap">
+              <label for="sortSelect">SORT BY</label>
+              <select class="sort-select" id="sortSelect">
+                <option value="recommended">Recommended</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+                <option value="size">Room Size</option>
+              </select>
+            </div>
+            <div class="view-toggle">
+              <button class="view-btn active" id="gridViewBtn" aria-label="Grid view">⊞</button>
+              <button class="view-btn" id="listViewBtn" aria-label="List view">≡</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Room Cards -->
+        <div id="roomCardsList">
+
+          <!-- Card 1 -->
+          <div class="room-result-card fade-in-up" data-type="deluxe" data-price="850" data-size="52" data-amenities="ocean" onclick="openRoomModal('deluxe-ocean')">
+            <div class="rrc-img-wrap">
+              <img src="images/suite.png" alt="Deluxe Ocean Room" />
+              <div class="rrc-badges">
+                <span class="rrc-badge rrc-badge-new">JUST LISTED</span>
+              </div>
+            </div>
+            <div class="rrc-info">
+              <div class="rrc-top">
+                <h3 class="rrc-name">Deluxe Ocean Room</h3>
+                <p class="rrc-desc">Wake up to panoramic Arabian Gulf views from your king-size bed. Marble bathrooms, premium linens, and your own private balcony await.</p>
+                <div class="rrc-amenities">
+                  <span class="rrc-amenity">Ocean View</span>
+                  <span class="rrc-amenity">Private Balcony</span>
+                  <span class="rrc-amenity">Marble Bath</span>
+                  <span class="rrc-amenity">King Bed</span>
+                  <span class="rrc-amenity">24hr Room Service</span>
+                </div>
+              </div>
+              <div class="rrc-specs">
+                <div class="rrc-spec"><span class="rrc-spec-val">52m²</span><span class="rrc-spec-key">ROOM SIZE</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">2</span><span class="rrc-spec-key">MAX GUESTS</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">25F</span><span class="rrc-spec-key">FLOOR</span></div>
+              </div>
+              <div class="rrc-bottom">
+                <div class="rrc-price-wrap">
+                  <span class="rrc-price-label">FROM</span>
+                  <div><span class="rrc-price">$850</span><span class="rrc-price-night">/ night</span></div>
+                </div>
+                <div class="rrc-actions">
+                  <button class="btn btn-ghost" onclick="event.stopPropagation();openRoomModal('deluxe-ocean')">VIEW DETAILS</button>
+                  <button class="btn btn-primary" onclick="event.stopPropagation();selectRoom('Deluxe Ocean Room','$850','suite.png')">SELECT ROOM</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="room-result-card fade-in-up fade-in-up-delay-1" data-type="suite" data-price="1800" data-size="120" data-amenities="ocean terrace" onclick="openRoomModal('ocean-suite')">
+            <div class="rrc-img-wrap">
+              <img src="images/pool.png" alt="Grand Ocean Suite" style="object-position:center 30%;" />
+              <div class="rrc-badges">
+                <span class="rrc-badge rrc-badge-hot">🔥 POPULAR</span>
+              </div>
+            </div>
+            <div class="rrc-info">
+              <div class="rrc-top">
+                <h3 class="rrc-name">Grand Ocean Suite</h3>
+                <p class="rrc-desc">A sweeping two-room sanctuary with a wraparound terrace, separate living area, and bespoke amenities curated for the discerning traveller.</p>
+                <div class="rrc-amenities">
+                  <span class="rrc-amenity">Ocean Panorama</span>
+                  <span class="rrc-amenity">Wraparound Terrace</span>
+                  <span class="rrc-amenity">Living Room</span>
+                  <span class="rrc-amenity">Soaking Tub</span>
+                  <span class="rrc-amenity">Espresso Bar</span>
+                </div>
+              </div>
+              <div class="rrc-specs">
+                <div class="rrc-spec"><span class="rrc-spec-val">120m²</span><span class="rrc-spec-key">ROOM SIZE</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">3</span><span class="rrc-spec-key">MAX GUESTS</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">35F</span><span class="rrc-spec-key">FLOOR</span></div>
+              </div>
+              <div class="rrc-bottom">
+                <div class="rrc-price-wrap">
+                  <span class="rrc-price-label">FROM</span>
+                  <div><span class="rrc-price">$1,800</span><span class="rrc-price-night">/ night</span></div>
+                </div>
+                <div class="rrc-actions">
+                  <button class="btn btn-ghost" onclick="event.stopPropagation();openRoomModal('ocean-suite')">VIEW DETAILS</button>
+                  <button class="btn btn-primary" onclick="event.stopPropagation();selectRoom('Grand Ocean Suite','$1,800','pool.png')">SELECT ROOM</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="room-result-card fade-in-up fade-in-up-delay-2" data-type="suite" data-price="2400" data-size="180" data-amenities="ocean jacuzzi butler" onclick="openRoomModal('royal-suite')">
+            <div class="rrc-img-wrap">
+              <img src="images/suite.png" alt="Royal Ocean Suite" style="filter:saturate(1.1);" />
+              <div class="rrc-badges">
+                <span class="rrc-badge rrc-badge-gold">⭐ SIGNATURE</span>
+              </div>
+            </div>
+            <div class="rrc-info">
+              <div class="rrc-top">
+                <h3 class="rrc-name">Royal Ocean Suite</h3>
+                <p class="rrc-desc">A two-floor private sanctuary complete with your own plunge pool, dedicated butler, and sunset cocktail service every evening.</p>
+                <div class="rrc-amenities">
+                  <span class="rrc-amenity">Private Plunge Pool</span>
+                  <span class="rrc-amenity">Dedicated Butler</span>
+                  <span class="rrc-amenity">2 Bedrooms</span>
+                  <span class="rrc-amenity">Gulf Jacuzzi</span>
+                  <span class="rrc-amenity">Sunset Bar Service</span>
+                </div>
+              </div>
+              <div class="rrc-specs">
+                <div class="rrc-spec"><span class="rrc-spec-val">180m²</span><span class="rrc-spec-key">ROOM SIZE</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">4</span><span class="rrc-spec-key">MAX GUESTS</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">42F</span><span class="rrc-spec-key">FLOOR</span></div>
+              </div>
+              <div class="rrc-bottom">
+                <div class="rrc-price-wrap">
+                  <span class="rrc-price-label">FROM</span>
+                  <div><span class="rrc-price">$2,400</span><span class="rrc-price-night">/ night</span></div>
+                </div>
+                <div class="rrc-actions">
+                  <button class="btn btn-ghost" onclick="event.stopPropagation();openRoomModal('royal-suite')">VIEW DETAILS</button>
+                  <button class="btn btn-primary" onclick="event.stopPropagation();selectRoom('Royal Ocean Suite','$2,400','suite.png')">SELECT ROOM</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="room-result-card fade-in-up" data-type="villa" data-price="5800" data-size="380" data-amenities="pool butler terrace ocean" onclick="openRoomModal('sky-villa')">
+            <div class="rrc-img-wrap">
+              <img src="images/beach.png" alt="Sky Villa" style="object-position:center 60%;" />
+              <div class="rrc-badges">
+                <span class="rrc-badge rrc-badge-gold">SKY VILLA</span>
+              </div>
+            </div>
+            <div class="rrc-info">
+              <div class="rrc-top">
+                <h3 class="rrc-name">Sky Villa</h3>
+                <p class="rrc-desc">Your private sky residence above the world. Four bedrooms, a sky-high infinity pool, personal chef, and 380 square metres of pure indulgence.</p>
+                <div class="rrc-amenities">
+                  <span class="rrc-amenity">Infinity Pool</span>
+                  <span class="rrc-amenity">4 Bedrooms</span>
+                  <span class="rrc-amenity">Personal Chef</span>
+                  <span class="rrc-amenity">Home Theatre</span>
+                  <span class="rrc-amenity">Sky Garden</span>
+                  <span class="rrc-amenity">Helipad Access</span>
+                </div>
+              </div>
+              <div class="rrc-specs">
+                <div class="rrc-spec"><span class="rrc-spec-val">380m²</span><span class="rrc-spec-key">VILLA SIZE</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">8</span><span class="rrc-spec-key">MAX GUESTS</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">Top 5F</span><span class="rrc-spec-key">FLOORS</span></div>
+              </div>
+              <div class="rrc-bottom">
+                <div class="rrc-price-wrap">
+                  <span class="rrc-price-label">FROM</span>
+                  <div><span class="rrc-price">$5,800</span><span class="rrc-price-night">/ night</span></div>
+                </div>
+                <div class="rrc-actions">
+                  <button class="btn btn-ghost" onclick="event.stopPropagation();openRoomModal('sky-villa')">VIEW DETAILS</button>
+                  <button class="btn btn-primary" onclick="event.stopPropagation();selectRoom('Sky Villa','$5,800','beach.png')">SELECT ROOM</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="room-result-card fade-in-up fade-in-up-delay-1" data-type="deluxe" data-price="1100" data-size="68" data-amenities="ocean terrace" onclick="openRoomModal('premier-gulf')">
+            <div class="rrc-img-wrap">
+              <img src="images/restaurant.png" alt="Premier Gulf Room" style="object-position:center 40%;" />
+            </div>
+            <div class="rrc-info">
+              <div class="rrc-top">
+                <h3 class="rrc-name">Premier Gulf View Room</h3>
+                <p class="rrc-desc">Elevated elegance with oversized panoramic windows framing the entire Arabian Gulf. Features a separate dressing room and double vanity.</p>
+                <div class="rrc-amenities">
+                  <span class="rrc-amenity">Gulf Panorama</span>
+                  <span class="rrc-amenity">Dressing Room</span>
+                  <span class="rrc-amenity">Double Vanity</span>
+                  <span class="rrc-amenity">Deep Soak Tub</span>
+                </div>
+              </div>
+              <div class="rrc-specs">
+                <div class="rrc-spec"><span class="rrc-spec-val">68m²</span><span class="rrc-spec-key">ROOM SIZE</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">2</span><span class="rrc-spec-key">MAX GUESTS</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">30F</span><span class="rrc-spec-key">FLOOR</span></div>
+              </div>
+              <div class="rrc-bottom">
+                <div class="rrc-price-wrap">
+                  <span class="rrc-price-label">FROM</span>
+                  <div><span class="rrc-price">$1,100</span><span class="rrc-price-night">/ night</span></div>
+                </div>
+                <div class="rrc-actions">
+                  <button class="btn btn-ghost" onclick="event.stopPropagation();openRoomModal('premier-gulf')">VIEW DETAILS</button>
+                  <button class="btn btn-primary" onclick="event.stopPropagation();selectRoom('Premier Gulf View Room','$1,100','restaurant.png')">SELECT ROOM</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="room-result-card fade-in-up fade-in-up-delay-2" data-type="suite" data-price="3500" data-size="240" data-amenities="pool butler ocean jacuzzi" onclick="openRoomModal('wellness-suite')">
+            <div class="rrc-img-wrap">
+              <img src="images/spa.png" alt="Wellness Suite" />
+              <div class="rrc-badges">
+                <span class="rrc-badge rrc-badge-new">NEW</span>
+              </div>
+            </div>
+            <div class="rrc-info">
+              <div class="rrc-top">
+                <h3 class="rrc-name">Wellness Sanctuary Suite</h3>
+                <p class="rrc-desc">The hotel's first dedicated wellness suite — featuring an in-suite steam room, cold plunge, infrared sauna, and a private wellness concierge.</p>
+                <div class="rrc-amenities">
+                  <span class="rrc-amenity">In-Suite Sauna</span>
+                  <span class="rrc-amenity">Steam Room</span>
+                  <span class="rrc-amenity">Cold Plunge</span>
+                  <span class="rrc-amenity">Wellness Concierge</span>
+                  <span class="rrc-amenity">Meditation Garden</span>
+                </div>
+              </div>
+              <div class="rrc-specs">
+                <div class="rrc-spec"><span class="rrc-spec-val">240m²</span><span class="rrc-spec-key">SUITE SIZE</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">2</span><span class="rrc-spec-key">MAX GUESTS</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">38F</span><span class="rrc-spec-key">FLOOR</span></div>
+              </div>
+              <div class="rrc-bottom">
+                <div class="rrc-price-wrap">
+                  <span class="rrc-price-label">FROM</span>
+                  <div><span class="rrc-price">$3,500</span><span class="rrc-price-night">/ night</span></div>
+                </div>
+                <div class="rrc-actions">
+                  <button class="btn btn-ghost" onclick="event.stopPropagation();openRoomModal('wellness-suite')">VIEW DETAILS</button>
+                  <button class="btn btn-primary" onclick="event.stopPropagation();selectRoom('Wellness Sanctuary Suite','$3,500','spa.png')">SELECT ROOM</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="room-result-card fade-in-up" data-type="penthouse" data-price="12000" data-size="800" data-amenities="pool butler ocean terrace jacuzzi kitchen" onclick="openRoomModal('imperial-penthouse')">
+            <div class="rrc-img-wrap">
+              <img src="images/hero-aerial.png" alt="Imperial Penthouse" style="object-position:center 70%;" />
+              <div class="rrc-badges">
+                <span class="rrc-badge rrc-badge-gold">👑 IMPERIAL</span>
+              </div>
+            </div>
+            <div class="rrc-info">
+              <div class="rrc-top">
+                <h3 class="rrc-name">Imperial Penthouse</h3>
+                <p class="rrc-desc">The entire top floor — your private kingdom above the clouds. 360° views of Dubai, an Olympic-length lap pool, and an entourage of 12 dedicated staff.</p>
+                <div class="rrc-amenities">
+                  <span class="rrc-amenity">Entire Top Floor</span>
+                  <span class="rrc-amenity">Lap Pool</span>
+                  <span class="rrc-amenity">12 Staff Members</span>
+                  <span class="rrc-amenity">360° Views</span>
+                  <span class="rrc-amenity">Private Cinema</span>
+                  <span class="rrc-amenity">Helipad</span>
+                </div>
+              </div>
+              <div class="rrc-specs">
+                <div class="rrc-spec"><span class="rrc-spec-val">800m²</span><span class="rrc-spec-key">PENTHOUSE</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">16</span><span class="rrc-spec-key">MAX GUESTS</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">Full 60F</span><span class="rrc-spec-key">TOP FLOOR</span></div>
+              </div>
+              <div class="rrc-bottom">
+                <div class="rrc-price-wrap">
+                  <span class="rrc-price-label">FROM</span>
+                  <div><span class="rrc-price">$12,000</span><span class="rrc-price-night">/ night</span></div>
+                </div>
+                <div class="rrc-actions">
+                  <button class="btn btn-ghost" onclick="event.stopPropagation();openRoomModal('imperial-penthouse')">VIEW DETAILS</button>
+                  <button class="btn btn-primary" onclick="event.stopPropagation();selectRoom('Imperial Penthouse','$12,000','hero-aerial.png')">SELECT ROOM</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="room-result-card fade-in-up fade-in-up-delay-1" data-type="suite" data-price="4200" data-size="290" data-amenities="pool ocean butler terrace" onclick="openRoomModal('royal-garden')">
+            <div class="rrc-img-wrap">
+              <img src="images/pool.png" alt="Royal Garden Suite" style="filter:brightness(0.9) hue-rotate(10deg);" />
+              <div class="rrc-badges">
+                <span class="rrc-badge rrc-badge-gold">GARDEN SUITE</span>
+              </div>
+            </div>
+            <div class="rrc-info">
+              <div class="rrc-top">
+                <h3 class="rrc-name">Royal Garden Suite</h3>
+                <p class="rrc-desc">A lush tropical garden sanctuary attached to your suite — private dining pavilion, hanging gardens, and your own slice of paradise.</p>
+                <div class="rrc-amenities">
+                  <span class="rrc-amenity">Private Garden</span>
+                  <span class="rrc-amenity">Dining Pavilion</span>
+                  <span class="rrc-amenity">Plunge Pool</span>
+                  <span class="rrc-amenity">Butler Service</span>
+                  <span class="rrc-amenity">3 Bedrooms</span>
+                </div>
+              </div>
+              <div class="rrc-specs">
+                <div class="rrc-spec"><span class="rrc-spec-val">290m²</span><span class="rrc-spec-key">SUITE SIZE</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">6</span><span class="rrc-spec-key">MAX GUESTS</span></div>
+                <div class="rrc-spec"><span class="rrc-spec-val">Garden</span><span class="rrc-spec-key">LEVEL</span></div>
+              </div>
+              <div class="rrc-bottom">
+                <div class="rrc-price-wrap">
+                  <span class="rrc-price-label">FROM</span>
+                  <div><span class="rrc-price">$4,200</span><span class="rrc-price-night">/ night</span></div>
+                </div>
+                <div class="rrc-actions">
+                  <button class="btn btn-ghost" onclick="event.stopPropagation();openRoomModal('royal-garden')">VIEW DETAILS</button>
+                  <button class="btn btn-primary" onclick="event.stopPropagation();selectRoom('Royal Garden Suite','$4,200','pool.png')">SELECT ROOM</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /roomCardsList -->
+      </div><!-- /booking-main -->
+    </div><!-- /booking-layout -->
+  </div><!-- /step1 -->
+
+  <!-- ═══════════════════════════════════════
+       STEP 2: GUEST DETAILS + SUMMARY
+  ═══════════════════════════════════════ -->
+  <div id="bookingStep2" style="display:none;">
+    <div class="booking-layout">
+      <!-- Guest Form -->
+      <div>
+        <div class="booking-form-section">
+          <h3>Guest Information</h3>
+          <form id="guestForm" onsubmit="return false;">
+            <div class="form-grid">
+              <span class="form-section-title">PERSONAL DETAILS</span>
+
+              <div class="form-group">
+                <label for="firstName">FIRST NAME *</label>
+                <input type="text" id="firstName" placeholder="Alexandra" required />
+              </div>
+              <div class="form-group">
+                <label for="lastName">LAST NAME *</label>
+                <input type="text" id="lastName" placeholder="Montague" required />
+              </div>
+              <div class="form-group">
+                <label for="guestEmail">EMAIL ADDRESS *</label>
+                <input type="email" id="guestEmail" placeholder="alexandra@example.com" required />
+              </div>
+              <div class="form-group">
+                <label for="guestPhone">PHONE NUMBER *</label>
+                <input type="tel" id="guestPhone" placeholder="+1 (555) 000-0000" required />
+              </div>
+              <div class="form-group">
+                <label for="nationality">NATIONALITY</label>
+                <select id="nationality">
+                  <option value="">Select Country</option>
+                  <option>United Kingdom</option>
+                  <option>United States</option>
+                  <option>France</option>
+                  <option>Germany</option>
+                  <option>UAE</option>
+                  <option>Saudi Arabia</option>
+                  <option>India</option>
+                  <option>China</option>
+                  <option>Russia</option>
+                  <option>Bangladesh</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="occasion">SPECIAL OCCASION</label>
+                <select id="occasion">
+                  <option value="">None</option>
+                  <option>Honeymoon</option>
+                  <option>Anniversary</option>
+                  <option>Birthday</option>
+                  <option>Corporate</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label for="specialRequests">SPECIAL REQUESTS</label>
+                <textarea id="specialRequests" placeholder="Rose petals, dietary requirements, early check-in..."></textarea>
+              </div>
+
+              <span class="form-section-title">PAYMENT DETAILS</span>
+
+              <div class="form-group full">
+                <label for="cardName">NAME ON CARD *</label>
+                <input type="text" id="cardName" placeholder="Alexandra Montague" required />
+              </div>
+              <div class="form-group full">
+                <label for="cardNumber">CARD NUMBER *</label>
+                <div class="card-input-wrap">
+                  <input type="text" id="cardNumber" placeholder="•••• •••• •••• ••••" maxlength="19" required />
+                  <span class="card-icon">💳</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cardExpiry">EXPIRY DATE *</label>
+                <input type="text" id="cardExpiry" placeholder="MM / YY" maxlength="7" required />
+              </div>
+              <div class="form-group">
+                <label for="cardCvv">CVV *</label>
+                <input type="text" id="cardCvv" placeholder="•••" maxlength="4" required />
+              </div>
+            </div>
+
+            <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+              <button class="btn btn-ghost" onclick="goBackToStep1()" type="button">← BACK TO ROOMS</button>
+              <button class="btn btn-primary" onclick="proceedToConfirm()" id="proceedBtn" type="button">CONFIRM BOOKING →</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Summary Sidebar -->
+      <div class="booking-summary" id="bookingSummary">
+        <div class="summary-header">
+          <h3>BOOKING SUMMARY</h3>
+        </div>
+        <div class="summary-room-img">
+          <img id="summaryImg" src="images/suite.png" alt="Selected Room" />
+        </div>
+        <div class="summary-body">
+          <p class="summary-room-name" id="summaryRoomName">Royal Ocean Suite</p>
+          <p class="summary-room-type" id="summaryRoomType">Luxury Suite · 2 Bedrooms</p>
+
+          <div class="summary-row">
+            <span>Check-in</span>
+            <span id="summaryCheckin">— Select dates —</span>
+          </div>
+          <div class="summary-row">
+            <span>Check-out</span>
+            <span id="summaryCheckout">— Select dates —</span>
+          </div>
+          <div class="summary-row">
+            <span>Nights</span>
+            <span id="summaryNights">—</span>
+          </div>
+          <div class="summary-row">
+            <span>Guests</span>
+            <span id="summaryGuests">2</span>
+          </div>
+          <div class="summary-row">
+            <span>Room Rate</span>
+            <span id="summaryRate">$2,400 / night</span>
+          </div>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="summarySubtotal">—</span>
+          </div>
+          <div class="summary-row">
+            <span>Taxes & Fees (5%)</span>
+            <span id="summaryTax">—</span>
+          </div>
+          <div class="summary-total">
+            <span class="summary-total-label">TOTAL</span>
+            <span class="summary-total-price" id="summaryTotal">—</span>
+          </div>
+
+          <button class="summary-confirm-btn" onclick="proceedToConfirm()">CONFIRM BOOKING</button>
+          <p class="summary-security">🔒 Secured with 256-bit SSL encryption</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       STEP 3: CONFIRMATION
+  ═══════════════════════════════════════ -->
+  <div id="bookingStep3" style="display:none;">
+    <div class="confirmation-screen show">
+      <div class="confirm-icon">✓</div>
+      <p class="confirm-ref" id="confirmRef">BOOKING REFERENCE: #AR-000000</p>
+      <h2 class="confirm-title">Your Stay is Confirmed</h2>
+      <p class="confirm-subtitle">
+        Thank you for choosing Atlantis The Royal.<br/>
+        A confirmation has been sent to <strong id="confirmEmail">your email</strong>.<br/>
+        We look forward to welcoming you.
+      </p>
+      <div class="confirm-details" id="confirmDetails">
+        <div class="confirm-detail-item">
+          <span class="confirm-detail-label">ROOM</span>
+          <span class="confirm-detail-value" id="cd-room">—</span>
+        </div>
+        <div class="confirm-detail-item">
+          <span class="confirm-detail-label">GUEST</span>
+          <span class="confirm-detail-value" id="cd-guest">—</span>
+        </div>
+        <div class="confirm-detail-item">
+          <span class="confirm-detail-label">CHECK-IN</span>
+          <span class="confirm-detail-value" id="cd-checkin">—</span>
+        </div>
+        <div class="confirm-detail-item">
+          <span class="confirm-detail-label">CHECK-OUT</span>
+          <span class="confirm-detail-value" id="cd-checkout">—</span>
+        </div>
+        <div class="confirm-detail-item">
+          <span class="confirm-detail-label">GUESTS</span>
+          <span class="confirm-detail-value" id="cd-guests">—</span>
+        </div>
+        <div class="confirm-detail-item">
+          <span class="confirm-detail-label">TOTAL PAID</span>
+          <span class="confirm-detail-value" id="cd-total" style="color:var(--gold);">—</span>
+        </div>
+      </div>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+        <a href="index.html" class="btn btn-ghost">← BACK TO HOME</a>
+        <button class="btn btn-primary" onclick="window.print()">PRINT CONFIRMATION</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       ROOM DETAIL MODAL
+  ═══════════════════════════════════════ -->
+  <div class="modal-overlay" id="roomModal">
+    <div class="modal-box" style="position:relative;">
+      <button class="modal-close" onclick="closeModal()" aria-label="Close modal">✕</button>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="images/suite.png" alt="Room" />
+        <div class="modal-img-gradient"></div>
+      </div>
+      <div class="modal-body">
+        <p class="eyebrow" id="modalEyebrow">LUXURY SUITE</p>
+        <h2 id="modalTitle">Royal Ocean Suite</h2>
+        <p class="rrc-desc" id="modalDesc">Description here.</p>
+        <div class="rrc-specs" id="modalSpecs"></div>
+        <p class="filter-label" style="margin-bottom:1rem;">ALL AMENITIES</p>
+        <div class="modal-amenities-grid" id="modalAmenities"></div>
+        <div class="modal-price-row">
+          <div class="rrc-price-wrap">
+            <span class="rrc-price-label">FROM</span>
+            <div><span class="rrc-price" id="modalPrice">$2,400</span><span class="rrc-price-night">/ night</span></div>
+          </div>
+          <button class="btn btn-primary" id="modalSelectBtn">SELECT THIS ROOM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="booking-script.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

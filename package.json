@@ -1,0 +1,8 @@
+{
+  "name": "atlantis-the-royal",
+  "version": "1.0.0",
+  "description": "Atlantis The Royal - Ultra Luxury Hotel Website",
+  "scripts": {
+    "dev": "npx live-server --port=3000 --open=index.html"
+  }
+}
