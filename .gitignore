@@ -1,0 +1,24 @@
+# Dependency directories
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+backend/.env
+frontend/.env
+
+# Build outputs
+dist/
+frontend/dist/
+.next/
+backend/.next/
+.vite/
+
+# System files
+.DS_Store
+Thumbs.db
