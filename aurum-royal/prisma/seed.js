@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 const rooms = [
   {
-    id: 'room-deluxe-001',
+    id: '60c72b2f9b1d8e001f3c8f81',
     name: 'Deluxe Ocean Room',
     type: 'deluxe',
     price: 850,
@@ -21,7 +21,7 @@ const rooms = [
     ]),
   },
   {
-    id: 'room-ocean-002',
+    id: '60c72b2f9b1d8e001f3c8f82',
     name: 'Royal Ocean Suite',
     type: 'ocean',
     price: 2400,
@@ -38,7 +38,7 @@ const rooms = [
     ]),
   },
   {
-    id: 'room-villa-003',
+    id: '60c72b2f9b1d8e001f3c8f83',
     name: 'Sky Villa',
     type: 'villa',
     price: 5800,
@@ -55,7 +55,7 @@ const rooms = [
     ]),
   },
   {
-    id: 'room-royal-004',
+    id: '60c72b2f9b1d8e001f3c8f84',
     name: 'Royal Penthouse',
     type: 'royal',
     price: 12000,
@@ -72,7 +72,7 @@ const rooms = [
     ]),
   },
   {
-    id: 'room-sea-005',
+    id: '60c72b2f9b1d8e001f3c8f85',
     name: 'Sea Breeze Suite',
     type: 'deluxe',
     price: 1200,

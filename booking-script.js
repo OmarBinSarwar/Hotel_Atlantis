@@ -40,7 +40,7 @@ const ROOMS = {
   'ocean-suite': {
     title: 'Grand Ocean Suite',
     eyebrow: 'GRAND SUITE',
-    desc: 'A sweeping two-room sanctuary with a wraparound terrace, separate living area, and bespoke amenities curated for the discerning traveller. Dubai's skyline as your backdrop.',
+    desc: 'A sweeping two-room sanctuary with a wraparound terrace, separate living area, and bespoke amenities curated for the discerning traveller. Dubai\'s skyline as your backdrop.',
     price: '$1,800',
     img: 'pool.png',
     specs: [
@@ -644,3 +644,9 @@ style.textContent = `
   .error-shake { animation: errorShake 0.35s ease; }
 `;
 document.head.appendChild(style);
+
+window.openRoomModal = openRoomModal;
+window.closeModal = closeModal;
+window.selectRoom = selectRoom;
+window.goBackToStep1 = goBackToStep1;
+window.proceedToConfirm = proceedToConfirm;

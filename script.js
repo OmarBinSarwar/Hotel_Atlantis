@@ -187,3 +187,5 @@ document.querySelectorAll('.fade-in-up, .discover-stats').forEach(el => observer
     if (co.value <= ci.value) co.value = fmt(newMin);
   });
 })();
+
+window.goToBooking = goToBooking;
