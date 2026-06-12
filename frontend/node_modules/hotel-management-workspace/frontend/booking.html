@@ -4,6 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Book Your Stay | Atlantis The Royal – Luxury Resort</title>
+  <script>
+    // Global image fallback handler for path mismatch in deployments
+    window.addEventListener('error', function(e) {
+      if (e.target.tagName === 'IMG') {
+        const src = e.target.src;
+        if (src.includes('/images/') && !src.includes('/public/images/')) {
+          e.target.src = src.replace('/images/', '/public/images/');
+        } else if (src.includes('images/') && !src.includes('public/images/')) {
+          e.target.src = src.replace('images/', 'public/images/');
+        }
+      }
+    }, true);
+  </script>
   <meta name="description" content="Reserve your stay at Atlantis The Royal. Choose from world-class suites, penthouses and sky villas on the shores of the Arabian Gulf." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

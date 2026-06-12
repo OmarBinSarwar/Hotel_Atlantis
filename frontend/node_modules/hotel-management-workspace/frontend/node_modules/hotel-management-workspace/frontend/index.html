@@ -4,6 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Atlantis The Royal | Luxury Hotel & Resort</title>
+  <script>
+    // Global image fallback handler for path mismatch in deployments
+    window.addEventListener('error', function(e) {
+      if (e.target.tagName === 'IMG') {
+        const src = e.target.src;
+        if (src.includes('/images/') && !src.includes('/public/images/')) {
+          e.target.src = src.replace('/images/', '/public/images/');
+        } else if (src.includes('images/') && !src.includes('public/images/')) {
+          e.target.src = src.replace('images/', 'public/images/');
+        }
+      }
+    }, true);
+  </script>
   <meta name="description" content="Atlantis The Royal is the world's most iconic ultra-luxury experiential resort. Discover extraordinary stays, dining, entertainment and wellness on the Arabian Gulf." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
