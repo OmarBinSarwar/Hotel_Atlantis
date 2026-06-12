@@ -108,6 +108,8 @@ async function fetchRooms() {
       list.innerHTML = '';
       
       json.data.forEach(room => {
+        const imageName = room.image.split('/').pop();
+
         // Populate global ROOMS helper
         ROOMS[room.id] = {
           id: room.id,
@@ -115,7 +117,7 @@ async function fetchRooms() {
           eyebrow: room.type.toUpperCase(),
           desc: room.description,
           price: `$${room.price}`,
-          img: room.image.replace('/images/', ''),
+          img: imageName,
           specs: [
             { val: room.size, key: 'SIZE' },
             { val: room.maxGuests.toString(), key: 'GUESTS' },
@@ -134,38 +136,46 @@ async function fetchRooms() {
         card.dataset.amenities = room.amenities.join(' ').toLowerCase();
         card.onclick = () => openRoomModal(room.id);
 
+        let badgeHTML = '';
+        if (room.price >= 5000) {
+          badgeHTML = `<span class="rrc-badge rrc-badge-hot">👑 SIGNATURE</span>`;
+        } else if (room.type === 'deluxe') {
+          badgeHTML = `<span class="rrc-badge rrc-badge-new">JUST LISTED</span>`;
+        } else if (room.type === 'ocean' || room.type === 'royal') {
+          badgeHTML = `<span class="rrc-badge rrc-badge-hot">🔥 POPULAR</span>`;
+        }
+
+        const amenitiesHTML = room.amenities.slice(0, 5).map(a => 
+          `<span class="rrc-amenity">${a}</span>`
+        ).join('');
+
         card.innerHTML = `
-          <div class="rrc-img-container">
-            <img class="rrc-img" src="images/${room.image.replace('/images/', '')}" alt="${room.name}">
+          <div class="rrc-img-wrap">
+            <img src="/images/${imageName}" alt="${room.name}">
+            ${badgeHTML ? `<div class="rrc-badges">${badgeHTML}</div>` : ''}
           </div>
-          <div class="rrc-content">
-            <div class="rrc-header">
-              <div>
-                <span class="rrc-eyebrow">${room.type.toUpperCase()}</span>
-                <h3 class="rrc-title">${room.name}</h3>
-              </div>
-              <div class="rrc-price-tag">
-                <span class="rrc-price">$${room.price.toLocaleString()}</span>
-                <span class="rrc-per-night">/ night</span>
+          <div class="rrc-info">
+            <div class="rrc-top">
+              <h3 class="rrc-name">${room.name}</h3>
+              <p class="rrc-desc">${room.description}</p>
+              <div class="rrc-amenities">
+                ${amenitiesHTML}
               </div>
             </div>
-            <p class="rrc-desc">${room.description}</p>
-            <div class="rrc-details">
-              <div class="rrc-specs">
-                <div class="rrc-spec">
-                  <span class="rrc-spec-val">${room.size}</span>
-                  <span class="rrc-spec-key">SIZE</span>
-                </div>
-                <div class="rrc-spec">
-                  <span class="rrc-spec-val">${room.maxGuests}</span>
-                  <span class="rrc-spec-key">GUESTS</span>
-                </div>
-                <div class="rrc-spec">
-                  <span class="rrc-spec-val">${room.bedType}</span>
-                  <span class="rrc-spec-key">BED</span>
-                </div>
+            <div class="rrc-specs">
+              <div class="rrc-spec"><span class="rrc-spec-val">${room.size}</span><span class="rrc-spec-key">ROOM SIZE</span></div>
+              <div class="rrc-spec"><span class="rrc-spec-val">${room.maxGuests}</span><span class="rrc-spec-key">MAX GUESTS</span></div>
+              <div class="rrc-spec"><span class="rrc-spec-val">${room.bedType}</span><span class="rrc-spec-key">BEDDING</span></div>
+            </div>
+            <div class="rrc-bottom">
+              <div class="rrc-price-wrap">
+                <span class="rrc-price-label">FROM</span>
+                <div><span class="rrc-price">$${room.price.toLocaleString()}</span><span class="rrc-price-night">/ night</span></div>
               </div>
-              <button class="btn btn-gold rrc-btn">VIEW DETAILS →</button>
+              <div class="rrc-actions">
+                <button class="btn btn-ghost" onclick="event.stopPropagation(); openRoomModal('${room.id}')">VIEW DETAILS</button>
+                <button class="btn btn-primary" onclick="event.stopPropagation(); selectRoom('${room.id}', '${room.name.replace(/'/g, "\\'")}', '$${room.price}', '${imageName}')">SELECT ROOM</button>
+              </div>
             </div>
           </div>
         `;
@@ -323,7 +333,7 @@ function openRoomModal(roomId) {
   document.getElementById('modalTitle').textContent     = room.title;
   document.getElementById('modalDesc').textContent      = room.desc;
   document.getElementById('modalPrice').textContent     = room.price;
-  document.getElementById('modalImg').src               = 'images/' + room.img;
+  document.getElementById('modalImg').src               = '/images/' + room.img;
 
   const specsEl = document.getElementById('modalSpecs');
   specsEl.innerHTML = room.specs.map(s =>
@@ -505,7 +515,7 @@ function updateSummary() {
   const totalEl = document.getElementById('summaryTotal');
   const guestEl = document.getElementById('summaryGuests');
 
-  if (imgEl   && state.selectedImg)  imgEl.src = 'images/' + state.selectedImg;
+  if (imgEl   && state.selectedImg)  imgEl.src = '/images/' + state.selectedImg;
   if (nameEl  && state.selectedRoom) nameEl.textContent = state.selectedRoom;
   if (guestEl) guestEl.textContent = state.guests + ' Guest' + (state.guests > 1 ? 's' : '');
 
